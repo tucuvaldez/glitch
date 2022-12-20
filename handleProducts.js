@@ -20,12 +20,12 @@ class HandleProducts {
         let randomId = Math.floor(Math.random() * 3) + 1
         try {
             const obj = productos.find(prod => prod.id === randomId)
+            console.log(obj);
             return obj
         } catch (error) {
             console.log(`error: ${error}`)
         }
     }
 }
-
 
 module.exports = HandleProducts;

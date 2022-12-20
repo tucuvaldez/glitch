@@ -3,7 +3,8 @@ const PORT = process.env.PORT || 8080;
 let app = express();
 
 const HandleProducts = require('./handleProducts')
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 let productos = new HandleProducts('productos.txt')
 // let getData = await productos.getData();
@@ -17,8 +18,6 @@ app.get('/productos', async (req, res, next) => {
 app.get('/productoRandom', async (req, res, next) => {
     res.send(await productos.getRandom());
 })
-
-
 
 app.listen(PORT, () => { console.log(`Server on http://localhost:${PORT}/productos`) });
 
